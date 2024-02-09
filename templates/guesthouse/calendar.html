@@ -1,0 +1,11 @@
+{% extends 'base/sider_base.html' %}
+
+{% block content %}
+<div class="clearfix">
+    <a class="btn btn-warning center" href="{% url 'guesthouse:calendar' %}?{{ prev_month }} "> << Previous Month </a>
+    <a class="btn btn-warning center" href="{% url 'guesthouse:calendar' %}?{{ next_month }}"> Next Month >> </a>
+</div>
+<div style="color: rgb(0, 0, 0);">
+    {{ calendar }}
+</div>
+{% endblock %}

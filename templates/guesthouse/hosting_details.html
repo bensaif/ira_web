@@ -1,0 +1,107 @@
+{% extends 'base/sider_base.html' %}
+{% load static %}
+{% block title %}Maison d'Hôte {% endblock title %}
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-dashboard"></i> Tableau de bord</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'guesthouse:gh'%}"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item">Hébergement</li>
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon">
+            <i class="icon fa fa-thumbs-o-up fa-3x"></i>
+            <div class="info">
+                <h4>Hébergement En cours</h4>
+                <p><b>{{running_hosting}}</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon">
+            <i class="icon fa fa-files-o fa-3x"></i>
+            <div class="info">
+                <h4>Hébergement Annulé</h4>
+                <p><b>{{total_hosting}}</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small warning coloured-icon">
+            <i class="icon fa fa-files-o fa-3x"></i>
+            <div class="info">
+                <h4>Chambres Vides</h4>
+                <p><b>{{total_room_empty}}</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small warning coloured-icon">
+            <i class="icon fa fa-files-o fa-3x"></i>
+            <div class="info">
+                <h4>Chambres Occupées</h4>
+                <p><b>{{total_occupied_room}}</b></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Hébergement (Hébergement) -->
+    <div class="col-md-12">
+        <div class="tile">
+            <p class="h3 p-2 mb-2 bg-info rounded-top">Hébergement</p>
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <div id="sampleTableh_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-hover table-bordered dataTable no-footer" id="sampleTableh" role="grid" aria-describedby="sampleTable_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 41.641px;">NL</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Etablissement</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 117.312px;">Chambre</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Client</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Arrivée</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Sortie</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for hebergement in latest_hosting %}
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{{ forloop.counter }}</td>
+                                                <td>{{hebergement.etablissement}}</td>
+                                                <td>{{hebergement.roomnum}}</td>
+                                                <td>{{hebergement.nomclient}}</td>
+                                                <td>{{hebergement.dateheberg}}</td>
+                                                <td>{{hebergement.datesortie}}</td>
+
+                                            </tr>
+                                        {% endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extrascripts %}
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
+
+    <script type="text/javascript">$('#sampleTableh').DataTable();</script>
+{% endblock extrascripts %}

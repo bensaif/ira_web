@@ -1,0 +1,82 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block main_content %}
+<div align="center" >
+    <!--<img src="{% static 'gbo/images/ira.png' %}"> -->
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+          <li data-target="#demo" data-slide-to="3" ></li>
+          <li data-target="#demo" data-slide-to="4"></li>
+          <li data-target="#demo" data-slide-to="5"></li>
+          <li data-target="#demo" data-slide-to="6"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'images/ira.png' %}" alt="IRA" width="885" height="500">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/lelcd.jpg' %}" alt="LELCD" width="885" height="500">
+            <div class="carousel-caption d-none d-md-block" style="color: green; background-color: aliceblue; opacity: 70%; font-size: large; font-weight: bold;">
+              <h5 >LELCD</h5>
+              <p>Laboratoire d'Erémologie et Lutte Contre la Désertification</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/lesor.jpg' %}" alt="LESOR" width="885" height="500">
+            <div class="carousel-caption d-none d-md-block" style="color: darkorange; background-color: aliceblue; opacity: 70%; font-size: large; font-weight: bold;">
+              <h5 >LESOR</h5>
+              <p>Laboratoire d'Economie et Sociétés Rurales</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/vulga.jpg' %}" alt="DV" width="885" height="500">
+            <div class="carousel-caption d-none d-md-block" style="color: darkgoldenrod; background-color: aliceblue; opacity: 70%; font-size: large; font-weight: bold;">
+              <h5 >DVR</h5>
+              <p>Direction de vulgarisation des résultats de la recherche</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/laco.jpg' %}" alt="LACO" width="885" height="500">
+            <div class="carousel-caption d-none d-md-block" style="color: darkgreen; background-color: aliceblue; opacity: 70%; font-size: large; font-weight: bold;">
+              <h5 >LACO</h5>
+              <p>Laboratoire d'Aridoculture et Cultures Oasiennes</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/LEPS.jpg' %}" alt="LEPS" width="885" height="500">
+            <div class="carousel-caption d-none d-md-block" style="color: darkcyan; background-color: aliceblue; opacity: 70%; font-size: large; font-weight: bold;">
+              <h5 >LEPS</h5>
+              <p>Laboratoire des écosystèmes pastoraux et valorisation des plantes spontanées et des micro-organismes associés</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/lefs.jpg' %}" alt="LEFS" width="885" height="500">
+            <div class="carousel-caption d-none d-md-block" style="color: darkred; background-color: aliceblue; opacity: 70%; font-size: large; font-weight: bold;">
+              <h5 >LEFS</h5>
+              <p>Laboratoire d'Elevage et Faune Sauvage</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+  
+
+</div>
+
+{% endblock %}

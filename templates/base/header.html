@@ -1,0 +1,109 @@
+{% load static %}
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #f3e8c8;" id="myNavbar">
+ <a href="{% url 'home'%}" class="navbar-brand "> 
+  <img src="{% static 'images/logo-ira.png' %}" alt="logo" href="" class="rounded-circle">
+</a>
+  
+  <div class="collapse navbar-collapse" id="mainNav">
+     <ul class="navbar-nav ml-auto nav-fill">
+       <!-- Accueil Menu -->
+      <li class="nav-item px-4">
+        <a href="{% url 'home'%}" class="nav-link" >Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- Guest House Menu -->
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >Guest House</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'guesthouse:gh' %}">Accueil</a>
+            <!-- <div class="dropdown-divider"></div>
+            <div class="d-md-flex align-items-start justify-content-start ">
+              <div>
+                 <div class="dropdown-header">Hébergement</div>
+                 <a class="dropdown-item" href="#">Calendrier</a>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="d-md-flex align-items-start justify-content-start ">
+              <div>
+                 <div class="dropdown-header">Réservation</div>
+                 <a class="dropdown-item" href="#">Calendrier</a>
+              </div>
+            </div> -->
+            
+          </div>
+      </li>
+      <!-- Pointage Menu -->
+      <li class="nav-item px-4 dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="PointageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pointage</a>
+       <div class="dropdown-menu dropdown-menu-left" aria-labelledby="PointageDropdown">
+        
+          <a class="dropdown-item" href="">Accueil</a>
+           
+            <div class="d-md-flex align-items-start justify-content-start ">
+              <div>
+                <div class="dropdown-header">Pointage</div> 
+                <a class="dropdown-item" href="{% url 'pointage:ajout_pointage' %}">Ajout</a>
+                 <a class="dropdown-item" href="#">Statut</a>
+              </div>
+            </div>
+            
+            <div class="d-md-flex align-items-start justify-content-start ">
+              <div>
+                <a class="dropdown-item" href="#">Employé</a>
+                 <a class="dropdown-item" href="#">Etat</a>
+              </div>
+            </div> 
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Sodexo</a>
+          <a class="dropdown-item" href="#">Dattier</a>
+       </div>
+      </li>
+       <!-- Bureau d'ordre Menu -->
+      <li class="nav-item px-4 dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="bureauDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bureau d'Ordre</a>
+         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="bureauDropdown">
+            <a class="dropdown-item" href="#">Accueil</a>
+           <!-- <a class="dropdown-item" href="#"></a> -->
+         </div>
+      </li>
+      <!-- Infirmerie Menu -->
+      <li class="nav-item px-4">
+        <a href="#" class="nav-link">Infirmerie</a>
+      </li>
+      <!-- GBO Menu -->
+      <li class="nav-item px-4 dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GBO</a>
+      </li>
+      <!-- Entrepot Menu -->
+      <li class="nav-item px-4">
+        <a href="#" class="nav-link">Entrepôt</a>
+      </li>
+      <!-- Barre de recherche -->
+      <div class="input-group">
+          
+          <span id="basic-addon1" class="input-group-text"><a href="#">
+            {% if user.is_authenticated %}
+              {% if user.is_superuser %}
+                <li class="nav-item">
+                  <a class="nav-link" href="">Admin</a>
+                </li>
+                {%endif %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'members:logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'members:register_user' %}">Register</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'members:login' %}">Login</a>
+                </li>
+            {% endif %}
+          </span>
+          
+      </div>
+     </ul>
+  </div>
+</nav>
