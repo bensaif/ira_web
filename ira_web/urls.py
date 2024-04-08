@@ -24,7 +24,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('guesthouse/', include('guesthouse.urls')),
     path('members/', include('members.urls')),
-    path('pointage/', include('pointage.urls')),
 ]
 
 

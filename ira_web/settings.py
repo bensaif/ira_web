@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'guesthouse.apps.GuesthouseConfig',
     'crispy_forms',
     'members',
-    'pointage',
+
 ]
 
 MIDDLEWARE = [
