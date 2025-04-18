@@ -1,0 +1,35 @@
+{% extends 'stage/sider_base.html' %}
+{% load static %}
+{% block title %}Stage {% endblock title %}
+{% block breadcrumb %}
+    <div>
+        <h1><i class="fa fa-dashboard"></i> Tableau de bord</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home fa-lg"></i></a></li>
+        <li class="breadcrumb-item">Tableau de bord</li>
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+{% if user.is_authenticated %}
+ 
+
+
+<div></div>
+
+{% else %}
+<h1>Sorry! You Must Be Logged In To View This Page...</h1>
+
+<a href="{% url 'members:login'%}">Login Here</a>
+
+{% endif %}
+
+{% endblock %}
+
+{% block extrascripts %}
+    <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script type="text/javascript">$('#sampleTableh').DataTable();</script>
+{% endblock extrascripts %}

@@ -12,18 +12,15 @@ def login_user(request):
 			login(request, user)
 			return redirect('home')
 		else:
-			messages.success(request, ("There Was An Error Logging In, Try Again..."))	
+			messages.success(request, ("Logging Invalide, Essayez encore..."))	
 			return redirect('members:login')	
-
-
 	else:
 		return render(request, 'members/login.html', {})
 
 def logout_user(request):
 	logout(request)
-	messages.success(request, ("You Were Logged Out!"))
+	messages.success(request, ("Vous êtes déconnecté!"))
 	return redirect('home')
-
 
 def register_user(request):
 	if request.method == "POST":

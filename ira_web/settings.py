@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-1a$8)6sn)li6^@8qke)-i8rd@^d=+j622g+u5@wgjfn+#9#rh3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.10.103', '192.168.10.105']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.12.125']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'guesthouse.apps.GuesthouseConfig',
     'crispy_forms',
     'members',
-
+    'stage.apps.StageConfig',
 ]
 
 MIDDLEWARE = [
@@ -78,18 +78,41 @@ WSGI_APPLICATION = 'ira_web.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-#DATABASE_ROUTERS = ["guesthouse.router.HostRouter", "pointage.router.PointageRouter"]
-#DATABASE_APPS_MAPPING = {'guesthouse':'hostdb','pointage': 'secretariatdb'}
+#DATABASE_ROUTERS = ["stage.routers.StageRouter", "guesthouse.router.AllRouter", "members.router.AllRouter"]
+DATABASE_ROUTERS = ['ira_web.router.AuthRouter','ira_web.router.Host','ira_web.router.Stage']
+
+#DATABASE_APPS_MAPPING = {'guesthouse':'host', 'stage': 'stage', 'members':'host'}
 DATABASES = {
-    'default': {
+    'default': {},
+    'auth_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_auth',
+        'USER': 'root',
+        'PASSWORD': 'iraapps01',
+        'HOST': '192.168.12.125',
+        'PORT': '3306',
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"}
+    },
+
+    'host':{
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'irahost',
         'USER': 'root',
         'PASSWORD': 'iraapps01',
-        'HOST': '192.168.10.105',
+        'HOST': '192.168.12.125',
         'PORT': '3306',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
     },
+   
+    'stage': {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "stage",
+        "USER": "root",
+        "PASSWORD": "iraapps01",
+        "HOST": "192.168.12.125",
+        "PORT": "3306",
+        'OPTIONS': { 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
+    }
 }
 
 
@@ -118,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Tunis'
 
 USE_I18N = True
 

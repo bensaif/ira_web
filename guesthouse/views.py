@@ -181,7 +181,7 @@ class reserve_details(View):
         occupied_meeting_room = Reservation.objects.extra(select={"Reservation.salle": "IN SELECT Salle.type FROM Salle"}).filter(statutres = 'Réservation confirmée', datefin=today)
 
         empty_meeting_room = Salle.objects.extra(
-            select={"Salle.type": "NOT IN SELECT Reservation.salle FROM Resrvation WHERE statutres like 'Réservation confirmée' AND today BETWEEN datedeb AND datefin"}
+            select={"Salle.type": "NOT IN SELECT Reservation.salle FROM Reservation WHERE statutres like 'Réservation confirmée' AND today BETWEEN datedeb AND datefin"}
         )
 
         context = {

@@ -1,0 +1,105 @@
+{% extends 'stage/sider_base.html' %}
+
+{% load static %}
+
+{% block title %}
+Etudiant
+{% endblock title %}
+
+{% block extracss %}
+  <link href="#" rel="stylesheet" />
+{% endblock extracss %}
+
+{% block breadcrumb %}
+  <div>
+      <h1><i class="fa fa-calendar"></i> Etudiant</h1>
+  </div>
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'stage:stage'%}"><i class="fa fa-home fa-lg"></i></a></li>
+      <li class="breadcrumb-item">Etudiant</li>
+  </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+  
+<div class="row">
+
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon">
+            <i class="icon fa fa-thumbs-o-up fa-3x"></i>
+            <div class="info">
+                <h4>Etudiants En mission</h4>
+                <p><b>##</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon">
+            <i class="icon fa fa-files-o fa-3x"></i>
+            <div class="info">
+                <h4>Etudiants de l'IRA</h4>
+                <p><b>##</b></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Etudiant (etudiant) -->
+    <div class="col-md-12">
+        <div class="tile">
+            <p class="h3 p-2 mb-2 bg-info rounded-top">Etudiant</p>
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <div id="sampleTableh_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-hover table-bordered dataTable no-footer" id="sampleTableh" role="grid" aria-describedby="sampleTable_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 41.641px;">NL</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">NOM</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 117.312px;">PRENOM</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">D.N</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">LIEU</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">NCIN</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">EMAIL</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">TELEPHONE</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">ADRESSE</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">STATUT</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">FILIERE</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">NIVEAU</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">ACTION</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for student in all_student %}
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{{ forloop.counter }}</td>
+                                                <td>{{student.nom}}</td>
+                                                <td>{{student.prenom}}</td>
+                                                <td>{{student.date_naissannce}}</td>
+                                                <td>{{student.lieu_naissance}}</td>
+                                                <td>{{student.num_identite}}</td>
+                                                <td>{{student.email}}</td>
+                                                <td>{{student.telephone}}</td>
+                                                <td>{{student.adresse}}</td>
+                                                <td>{{student.statut}}</td>
+                                                <td>{{student.filiere}}</td>
+                                                <td>{{student.niveau}}</td>
+                                                <td><input type="button" name="modifier"></td>
+                                            </tr>
+                                        {% endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}

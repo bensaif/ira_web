@@ -1,0 +1,58 @@
+{% extends 'stage/sider_base.html' %}
+
+{% load static %}
+
+{% block title %}
+Etudiant
+{% endblock title %}
+
+{% block extracss %}
+  <link href="#" rel="stylesheet" />
+{% endblock extracss %}
+
+{% block breadcrumb %}
+  <div>
+      <h1><i class="fa fa-calendar"></i> Etudiant</h1>
+  </div>
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'stage:stage'%}"><i class="fa fa-home fa-lg"></i></a></li>
+      <li class="breadcrumb-item">Etudiant</li>
+  </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+  
+  <!-- Formulaire d'ajout d'un nouveau étudiant -->
+    <div class="container">
+      <div class="row mx-md-n5">
+        <form action="" method=POST>
+          {% csrf_token %}
+          <div class="col px-md-5 p-3 border bg-light">
+            <table>
+              <thead class="breadcrumb-item">
+                <p class="text-danger h4">Nouveau Etudiant</p><br>
+              </thead>
+              <tbody>
+                {{ etudiant_form.as_table }}
+              </tbody>
+            </table>
+            <br>
+            <p>
+              <input type="submit" value="Submit" class="btn btn-secondary">
+            </p>
+          </div>
+        </form>
+
+        <!-- Recherche de la liste des étudiants dans la base -->
+      
+        <div class="col px-md-5 p-3 border bg-light">
+          {% include "stage/search_etudiant.html" %}
+                  
+             
+        </div>
+            
+      </div>
+            
+    </div>            
+
+{% endblock content %}

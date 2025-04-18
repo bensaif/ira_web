@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #f3e8c8;" id="myNavbar">
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #ebb95e;" id="myNavbar">
  <a href="{% url 'home'%}" class="navbar-brand "> 
   <img src="{% static 'images/logo-ira.png' %}" alt="logo" href="" class="rounded-circle">
 </a>
@@ -33,38 +33,60 @@
             
           </div>
       </li>
-      <!-- Pointage Menu -->
+      <!-- Bons Menu -->
       <li class="nav-item px-4 dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="PointageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pointage</a>
-       <div class="dropdown-menu dropdown-menu-left" aria-labelledby="PointageDropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="BonDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bons</a>
+       <div class="dropdown-menu dropdown-menu-left" aria-labelledby="BonDropdown">
         
           <a class="dropdown-item" href="">Accueil</a>
-           
+          <div class="dropdown-divider"></div>
             <div class="d-md-flex align-items-start justify-content-start ">
               <div>
-                <div class="dropdown-header">Pointage</div> 
+                <div class="dropdown-header">Sodexo</div> 
                 <a class="dropdown-item" href="#">Ajout</a>
-                 <a class="dropdown-item" href="#">Statut</a>
+                <a class="dropdown-item" href="#">Etat</a>
               </div>
             </div>
-            
+            <div class="dropdown-divider"></div>
             <div class="d-md-flex align-items-start justify-content-start ">
               <div>
+                <div class="dropdown-header">Employé</div> 
                 <a class="dropdown-item" href="#">Employé</a>
-                 <a class="dropdown-item" href="#">Etat</a>
+                <a class="dropdown-item" href="#">Etat</a>
               </div>
             </div> 
             <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Sodexo</a>
-          <a class="dropdown-item" href="#">Dattier</a>
+            <div class="d-md-flex align-items-start justify-content-start ">
+            <div>
+              <div class="dropdown-header">Dattier</div> 
+              <a class="dropdown-item" href="#">Ajout</a>
+              <a class="dropdown-item" href="#">Etat</a>
+            </div>
+          </div> 
+          
        </div>
       </li>
-       <!-- Bureau d'ordre Menu -->
+       <!-- Stage Menu -->
       <li class="nav-item px-4 dropdown">
-         <a class="nav-link dropdown-toggle" href="#" id="bureauDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bureau d'Ordre</a>
-         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="bureauDropdown">
-            <a class="dropdown-item" href="#">Accueil</a>
-           <!-- <a class="dropdown-item" href="#"></a> -->
+         <a class="nav-link dropdown-toggle" href="#" id="stageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Stage</a>
+         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="stageDropdown">
+            <a class="dropdown-item" href="{% url 'stage:stage'%}">Accueil</a>
+            <div class="dropdown-divider"></div>
+              <div class="d-md-flex align-items-start justify-content-start ">
+                <div>
+                  <div class="dropdown-header">Bourse d'Alternance</div> 
+                  <a class="dropdown-item" href="#">Ajout</a>
+                  <a class="dropdown-item" href="#">Etat</a>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="d-md-flex align-items-start justify-content-start ">
+                <div>
+                  <div class="dropdown-header">Stage</div> 
+                  <a class="dropdown-item" href="#">Ajout</a>
+                  <a class="dropdown-item" href="#">Etat</a>
+                </div>
+              </div>
          </div>
       </li>
       <!-- Infirmerie Menu -->

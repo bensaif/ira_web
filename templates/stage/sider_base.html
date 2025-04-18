@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+    {% load static %}
+
+<html lang="en">
+
+  <head>
+      <meta name="description" content="Maison d'Hôte" />
+      <!-- Twitter meta-->
+      <!-- Open Graph Meta-->
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="IRA Project" />
+      <meta property="og:description" content="Maison d'Hôte" />
+      <title>{% block title %}{% endblock title  %}</title>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- Main CSS-->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+      
+      <!-- Font-icon css-->
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+      {% block extracss %}
+      {% endblock extracss %}
+        
+      <!-- Main JS-->
+      <script src="{% static 'js/js/jquery-3.3.1.min.js' %}"></script>
+      <script src="{% static 'js/popper.js' %}"></script>
+      <script src="{% static 'js/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/main.js' %}"></script>
+
+  </head>
+    <body class="app sidebar-mini">
+        
+        <!-- Navbar-->
+        <header class="app-header">
+            <a class="app-header__logo" href="#">Stage & Bourse</a>
+            <!-- Sidebar toggle button-->
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+            <!-- Navbar Right Menu-->
+            <ul class="app-nav">
+                <li class="app-search">
+                    <input class="app-search__input" type="search" placeholder="Search" />
+                    <button class="app-search__button"><i class="fa fa-search"></i></button>
+                </li>
+                <!--Notification Menu-->
+                <li class="dropdown">
+                    <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+                    <ul class="app-notification dropdown-menu dropdown-menu-right">
+                        <li class="app-notification__title">You have 4 new notifications.</li>
+                        <div class="app-notification__content">
+                            <li>
+                                <a class="app-notification__item" href="javascript:;">
+                                    <span class="app-notification__icon">
+                                        <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span>
+                                    </span>
+                                    <div>
+                                        <p class="app-notification__message">Transaction complete</p>
+                                        <p class="app-notification__meta">2 days ago</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <div class="app-notification__content">
+                                <li>
+                                    <a class="app-notification__item" href="javascript:;">
+                                        <span class="app-notification__icon">
+                                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span>
+                                        </span>
+                                        <div>
+                                            <p class="app-notification__message">Transaction complete</p>
+                                            <p class="app-notification__meta">2 days ago</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                        <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+                    </ul>
+                </li>
+                <!-- User Menu-->
+                <li class="dropdown">
+                    <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-lg"></i>{{user.username}}</a>
+                    <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                        <li>
+                            <a class="dropdown-item" href="{%url 'members:logout' %}"><i class="fa fa-sign-out fa-lg"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        <!-- Sidebar menu-->
+        <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+        <aside class="app-sidebar">
+           
+            <div class="app-sidebar__user">
+                <a href="{% url 'home'%}">
+                    <img class="app-sidebar__user-avatar" src="{% static 'images/log-ira.png' %}" alt="User Image" height="50px" width="50px" />
+                </a>
+                <div>
+                    <p class="app-sidebar__user-name">IRA</p>
+                    <p class="app-sidebar__user-designation">Sécrétariat Général</p>
+                </div>
+            </div> 
+            {% if user.is_authenticated %}
+            <ul class="app-menu">
+                <li>
+                    <a class="app-menu__item active" href="#"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Tableau de bord</span></a>
+                </li>
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview">
+                        <i class="app-menu__icon fa fa-th-list"></i>
+                        <span class="app-menu__label">Etudiant</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu">
+                        <li>
+                            <a class="treeview-item" href="{% url 'stage:ajout_etudiant' %}"><i class="icon fa fa-circle-o"></i> Nouveau</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="{% url 'stage:list_etudiant' %}"><i class="icon fa fa-circle-o"></i> Information</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview">
+                        <i class="app-menu__icon fa fa-th-list"></i>
+                        <span class="app-menu__label">Stage</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i></a>
+                        <ul class="treeview-menu">
+                        <li>
+                            <a class="treeview-item" href="{% url 'stage:ajout_stage' %}"><i class="icon fa fa-circle-o"></i> Nouveau</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Information</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview">
+                    <i class="app-menu__icon fa fa-th-list"></i>
+                    <span class="app-menu__label">Bourse d'Alternance</span>
+                    <i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Nouveau</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="{#"><i class="icon fa fa-circle-o"></i> Information</a>
+                        </li>
+
+                    </ul>
+
+            </ul>
+            {% endif %}
+        </aside>
+          
+        <main class="app-content">
+            <div class="app-title">
+                {% block breadcrumb %}
+                {% endblock breadcrumb %}
+            </div>
+            {% block content %}
+            {% endblock content %}
+        </main>
+         <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <!-- Essential javascripts for application to work-->
+        {% include 'base/js.html' %}
+        {% block extrascripts %}
+        {% endblock extrascripts %}
+
+      
+    </body>
+
+</html>

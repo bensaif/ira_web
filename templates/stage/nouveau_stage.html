@@ -1,0 +1,57 @@
+{% extends 'stage/sider_base.html' %}
+
+{% load static %}
+
+{% block title %}
+Stage
+{% endblock title %}
+
+{% block extracss %}
+  <link href="#" rel="stylesheet" />
+{% endblock extracss %}
+
+{% block breadcrumb %}
+  <div>
+      <h1><i class="fa fa-calendar"></i> Calendrier</h1>
+      <p>Calendrier de Réservation</p>
+  </div>
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'stage:stage'%}"><i class="fa fa-home fa-lg"></i></a></li>
+      <li class="breadcrumb-item">Stage</li>
+  </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+  
+      <h1>Add Event</h1>
+      <br/><br/>
+
+      {% if submitted %}
+        Formulaire est enregistré avec succèes!!!
+      {% else %}
+
+          <form action="" method=POST>
+            {% csrf_token %}
+
+            <div>
+              {{ etudiant_form.as_p }}
+            </div>
+
+            <div>
+              {{stage_form.as_p}}
+            </div>
+
+            <div>
+              <input type="submit" value="Submit" class="btn btn-secondary">
+            </div>
+
+          </form>
+      
+      {% endif %}
+
+  <br/><br/>	
+    <a href="{% url 'members:login'%}">Connexion</a>
+
+
+
+{% endblock content %}
